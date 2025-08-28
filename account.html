@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Products - Farmers Market</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🌱 Farmers Market</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html" class="active">Buy</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+<!-- Account Section -->
+<section id="account" class="account-section">
+  <h2>👤 My Account</h2>
+
+  <!-- Tabs -->
+  <div class="account-tabs">
+    <button onclick="showAccountForm('login')">Login</button>
+    <button onclick="showAccountForm('register')">Register</button>
+  </div>
+
+  <!-- Login Form -->
+  <form id="login-form" class="account-form">
+    <label for="login-email">Email:</label>
+    <input type="email" id="login-email" placeholder="Enter your email" required>
+
+    <label for="login-password">Password:</label>
+    <input type="password" id="login-password" placeholder="Enter your password" required>
+
+    <button type="submit" class="btn">Login</button>
+  </form>
+
+  <!-- Register Form (hidden by default) -->
+  <form id="register-form" class="account-form" style="display: none;">
+    <label for="register-name">Full Name:</label>
+    <input type="text" id="register-name" placeholder="Enter your full name" required>
+
+    <label for="register-email">Email:</label>
+    <input type="email" id="register-email" placeholder="Enter your email" required>
+
+    <label for="register-password">Password:</label>
+    <input type="password" id="register-password" placeholder="Create a password" required>
+
+    <label for="register-role">I am a:</label>
+    <select id="register-role" required>
+      <option value="buyer">Buyer</option>
+      <option value="farmer">Farmer</option>
+    </select>
+
+    <button type="submit" class="btn">Register</button>
+  </form>
+</section>
+
+<!-- Small JS for switching forms -->
+<script>
+  function showAccountForm(formType) {
+    document.getElementById('login-form').style.display = (formType === 'login') ? 'block' : 'none';
+    document.getElementById('register-form').style.display = (formType === 'register') ? 'block' : 'none';
+  }
+</script>

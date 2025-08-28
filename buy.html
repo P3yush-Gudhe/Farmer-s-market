@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Products - Farmers Market</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🌱 Farmers Market</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html" class="active">Buy</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<section id="buy" class="buy-section">
+  <h2>🛒 Buy Fresh Products</h2>
+
+  <!-- Search + Filters -->
+  <div class="search-filter">
+    <input type="text" placeholder="Search products...">
+    <select>
+      <option value="">All Categories</option>
+      <option value="vegetables">Vegetables</option>
+      <option value="fruits">Fruits</option>
+      <option value="dairy">Dairy</option>
+      <option value="grains">Grains</option>
+      <option value="meat">Meat</option>
+    </select>
+    <select>
+      <option value="">Sort By</option>
+      <option value="price-low">Price: Low to High</option>
+      <option value="price-high">Price: High to Low</option>
+    </select>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.uQHT_7Rjew0P0pFCTzqi_AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Tomatoes">
+      <h3>Fresh Tomatoes</h3>
+      <p>Seller: GreenFarm</p>
+      <p class="price">₹50 / kg</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://i0.wp.com/www.agrifarming.in/wp-content/uploads/2020/06/Comp2-17.jpg?fit=1200%2C800&ssl=1" alt="Apples">
+      <h3>Organic Apples</h3>
+      <p>Seller: Sunrise Orchards</p>
+      <p class="price">₹150 / kg</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.QXYRO2jUVKZc0Mr2Ied5AAHaE8?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Milk">
+      <h3>Farm Fresh Milk</h3>
+      <p>Seller: Happy Cows Dairy</p>
+      <p class="price">₹60 / liter</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Products - Farmers Market</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🌱 Farmers Market</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html" class="active">Buy</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!-- Sell Section -->
+<section id="sell" class="sell-section">
+  <h2>🌾 Sell Your Products</h2>
+  <p>List your fresh produce and reach thousands of buyers directly.</p>
+
+  <form class="sell-form">
+    <!-- Product Name -->
+    <label for="product-name">Product Name:</label>
+    <input type="text" id="product-name" name="product-name" placeholder="e.g. Organic Tomatoes" required>
+
+    <!-- Category -->
+    <label for="category">Category:</label>
+    <select id="category" name="category" required>
+      <option value="">Select Category</option>
+      <option value="vegetables">Vegetables</option>
+      <option value="fruits">Fruits</option>
+      <option value="dairy">Dairy</option>
+      <option value="grains">Grains</option>
+      <option value="meat">Meat</option>
+    </select>
+
+    <!-- Price -->
+    <label for="price">Price (per unit):</label>
+    <input type="number" id="price" name="price" step="0.01" placeholder="e.g. 2.50" required>
+
+    <!-- Quantity -->
+    <label for="quantity">Available Quantity:</label>
+    <input type="number" id="quantity" name="quantity" placeholder="e.g. 50" required>
+
+    <!-- Image Upload -->
+    <label for="product-image">Upload Product Image:</label>
+    <input type="file" id="product-image" name="product-image" accept="image/*" required>
+
+    <!-- Description -->
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" placeholder="Write a short description about your product..." required></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn">Add Product</button>
+  </form>
+</section>
