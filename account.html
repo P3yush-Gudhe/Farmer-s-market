@@ -3,72 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buy Products - Farmers Market</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Account - FreshMarket</title>
+  <link rel="stylesheet" href="enhanced-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .auth-container {
+      max-width: 450px;
+      margin: 4rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .auth-tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-gray);
+    }
+
+    .auth-tab.active {
+      color: var(--primary-dark);
+      border-bottom: 3px solid var(--primary);
+    }
+
+    .auth-form {
+      display: none;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .auth-input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(45,106,79,0.15);
+    }
+
+    .auth-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .auth-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .auth-extra {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--text-gray);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">🌱 Farmers Market</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="buy.html" class="active">Buy</a></li>
-        <li><a href="sell.html">Sell</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="account.html">Account</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <span class="brand-icon">🌱</span>
+      <span>FreshMarket</span>
+    </div>
 
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="buy.html" class="nav-link">Shop</a></li>
+      <li><a href="sell.html" class="nav-link">Sell</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="cart.html" class="nav-link cart-link">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-badge">0</span>
+      </a></li>
+      <li><a href="account.html" class="btn-primary">Sign In</a></li>
+    </ul>
 
-<!-- Account Section -->
-<section id="account" class="account-section">
-  <h2>👤 My Account</h2>
+    <button class="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <!-- Tabs -->
-  <div class="account-tabs">
-    <button onclick="showAccountForm('login')">Login</button>
-    <button onclick="showAccountForm('register')">Register</button>
+<!-- MAIN ACCOUNT BOX -->
+<div class="auth-container">
+
+  <!-- TABS -->
+  <div class="auth-tabs">
+    <div class="auth-tab active" id="loginTab">Login</div>
+    <div class="auth-tab" id="signupTab">Sign Up</div>
   </div>
 
-  <!-- Login Form -->
-  <form id="login-form" class="account-form">
-    <label for="login-email">Email:</label>
-    <input type="email" id="login-email" placeholder="Enter your email" required>
+  <!-- LOGIN FORM -->
+  <form class="auth-form active" id="loginForm">
+    <input type="email" class="auth-input" placeholder="Email Address" required>
+    <input type="password" class="auth-input" placeholder="Password" required>
 
-    <label for="login-password">Password:</label>
-    <input type="password" id="login-password" placeholder="Enter your password" required>
+    <button class="auth-submit">Login</button>
 
-    <button type="submit" class="btn">Login</button>
+    <p class="auth-extra">Forgot password?</p>
   </form>
 
-  <!-- Register Form (hidden by default) -->
-  <form id="register-form" class="account-form" style="display: none;">
-    <label for="register-name">Full Name:</label>
-    <input type="text" id="register-name" placeholder="Enter your full name" required>
+  <!-- SIGNUP FORM -->
+  <form class="auth-form" id="signupForm">
+    <input type="text" class="auth-input" placeholder="Full Name" required>
+    <input type="email" class="auth-input" placeholder="Email Address" required>
+    <input type="number" class="auth-input" placeholder="Phone Number" required>
+    <input type="password" class="auth-input" placeholder="Create Password" required>
 
-    <label for="register-email">Email:</label>
-    <input type="email" id="register-email" placeholder="Enter your email" required>
+    <button class="auth-submit">Create Account</button>
 
-    <label for="register-password">Password:</label>
-    <input type="password" id="register-password" placeholder="Create a password" required>
-
-    <label for="register-role">I am a:</label>
-    <select id="register-role" required>
-      <option value="buyer">Buyer</option>
-      <option value="farmer">Farmer</option>
-    </select>
-
-    <button type="submit" class="btn">Register</button>
+    <p class="auth-extra">Already have an account? Login above.</p>
   </form>
-</section>
+</div>
 
-<!-- Small JS for switching forms -->
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 FreshMarket. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 <script>
-  function showAccountForm(formType) {
-    document.getElementById('login-form').style.display = (formType === 'login') ? 'block' : 'none';
-    document.getElementById('register-form').style.display = (formType === 'register') ? 'block' : 'none';
-  }
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+
+  loginTab.onclick = () => {
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+    loginForm.classList.add("active");
+    signupForm.classList.remove("active");
+  };
+
+  signupTab.onclick = () => {
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+    signupForm.classList.add("active");
+    loginForm.classList.remove("active");
+  };
 </script>
+
+<script src="enhanced-app.js"></script>
+<script>
+// Account page integration
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+
+  // Login Handler
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = loginForm.querySelector('input[type="email"]').value;
+    const password = loginForm.querySelector('input[type="password"]').value;
+    
+    const result = await window.FarmersMarket.login(email, password);
+    
+    if (result.success) {
+      window.FarmersMarket.showNotification('Login successful!', 'success');
+      setTimeout(() => window.location.href = 'index.html', 1500);
+    } else {
+      window.FarmersMarket.showNotification(result.message, 'error');
+    }
+  });
+
+  // Register Handler
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const userData = {
+      name: signupForm.querySelector('input[type="text"]').value,
+      email: signupForm.querySelector('input[type="email"]').value,
+      phone: signupForm.querySelector('input[type="number"]').value,
+      password: signupForm.querySelector('input[type="password"]').value,
+      role: 'buyer'
+    };
+    
+    const result = await window.FarmersMarket.register(userData);
+    
+    if (result.success) {
+      window.FarmersMarket.showNotification('Registration successful! Please login.', 'success');
+      loginTab.click();
+      signupForm.reset();
+    } else {
+      window.FarmersMarket.showNotification(result.message, 'error');
+    }
+  });
+});
+</script>
+</body>
+</html>
