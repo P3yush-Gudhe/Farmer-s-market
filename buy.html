@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buy Products - Farmers Market</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - FreshMarket</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="enhanced-style.css" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">🌱 Farmers Market</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="buy.html" class="active">Buy</a></li>
-        <li><a href="sell.html">Sell</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="account.html">Account</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
 
-<section id="buy" class="buy-section">
-  <h2>🛒 Buy Fresh Products</h2>
+    <div class="nav-brand">
+      <span class="brand-icon">🌱</span>
+      <span>FreshMarket</span>
+    </div>
 
-  <!-- Search + Filters -->
-  <div class="search-filter">
-    <input type="text" placeholder="Search products...">
-    <select>
-      <option value="">All Categories</option>
-      <option value="vegetables">Vegetables</option>
-      <option value="fruits">Fruits</option>
-      <option value="dairy">Dairy</option>
-      <option value="grains">Grains</option>
-      <option value="meat">Meat</option>
-    </select>
-    <select>
-      <option value="">Sort By</option>
-      <option value="price-low">Price: Low to High</option>
-      <option value="price-high">Price: High to Low</option>
-    </select>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a class="nav-link active">Shop</a></li>
+      <li><a href="sell.html" class="nav-link">Sell</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li>
+        <a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <!-- Products Grid -->
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="https://tse2.mm.bing.net/th/id/OIP.uQHT_7Rjew0P0pFCTzqi_AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Tomatoes">
-      <h3>Fresh Tomatoes</h3>
-      <p>Seller: GreenFarm</p>
-      <p class="price">₹50 / kg</p>
-      <button>Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="https://i0.wp.com/www.agrifarming.in/wp-content/uploads/2020/06/Comp2-17.jpg?fit=1200%2C800&ssl=1" alt="Apples">
-      <h3>Organic Apples</h3>
-      <p>Seller: Sunrise Orchards</p>
-      <p class="price">₹150 / kg</p>
-      <button>Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="https://th.bing.com/th/id/OIP.QXYRO2jUVKZc0Mr2Ied5AAHaE8?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Milk">
-      <h3>Farm Fresh Milk</h3>
-      <p>Seller: Happy Cows Dairy</p>
-      <p class="price">₹60 / liter</p>
-      <button>Add to Cart</button>
-    </div>
+<!-- PAGE TITLE (LIGHTWEIGHT & FAST) -->
+<section style="padding: 3rem 0; background: var(--bg-white);">
+  <div class="container section-header">
+    <h2 class="section-title">Shop Fresh Products</h2>
+    <p class="section-subtitle">Browse items directly from trusted farmers</p>
   </div>
 </section>
+
+<!-- FILTERS BAR -->
+<div class="container" style="margin-bottom: 2rem;">
+  <div style="
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+  ">
+    <select style="padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-color);">
+      <option value="">Category</option>
+      <option>Vegetables</option>
+      <option>Fruits</option>
+      <option>Dairy</option>
+      <option>Grains</option>
+      <option>Meat</option>
+      <option>Eggs</option>
+    </select>
+
+    <select style="padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-color);">
+      <option value="">Sort By</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+      <option>Newest First</option>
+    </select>
+
+    <input 
+      type="search"
+      placeholder="Search products..."
+      style="flex:1; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);"
+    />
+  </div>
+</div>
+
+<!-- PRODUCT GRID (DYNAMICALLY LOADED) -->
+<div class="container">
+  <div class="product-grid" id="allProducts">
+      <!-- JS loads products here instantly -->
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 FreshMarket. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="enhanced-app.js"></script>
+
+</body>
+</html>
