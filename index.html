@@ -1,111 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Farmers Market Portal</title>  
-  <link rel="stylesheet" href="style.css">  
-</head>  
-<body>  
-  <!-- Header / Navbar -->  
-  <header>  
-    <nav class="navbar">  
-      <div class="logo">🌱 Farmers Market</div>  
-      <ul class="nav-links">  
-        <li><a href="index.html">Home</a></li>  
-        <li><a href="buy.html">Buy</a></li>  
-        <li><a href="sell.html">Sell</a></li>  
-        <li><a href="cart.html">Cart</a></li>  
-        <li><a href="account.html">Account</a></li>  
-      </ul>  
-    </nav>  
-  </header>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmers Market - Fresh Local Produce</title>
+  <link rel="stylesheet" href="enhanced-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-icon">🌱</span>
+        <span class="brand-name">FreshMarket</span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="buy.html" class="nav-link">Shop</a></li>
+        <li><a href="sell.html" class="nav-link">Sell</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a></li>
+        <li><a href="account.html" class="btn-primary">Sign In</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-  <!-- Hero Section -->  
-  <section id="home" class="hero">  
-    <div class="hero-content">  
-      <h1>🌾 Fresh from the Farm, Right to Your Doorstep</h1>  
-      <p>Shop directly from trusted local farmers. Fresh, organic, and sustainable products delivered to you.</p>  
-      <div class="hero-buttons">  
-        <a href="buy.html" class="btn">Shop Now</a>  
-        <a href="sell.html" class="btn-outline">Start Selling</a>  
-      </div>  
-    </div>  
-    <div class="hero-image">  
-      <img src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Farm produce">  
-    </div>  
-  </section>  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-badge">🌾 Farm Fresh</span>
+        <h1 class="hero-title">Direct from Local Farms to Your Kitchen</h1>
+        <p class="hero-description">
+          Support local farmers while enjoying the freshest organic produce, 
+          dairy, and artisan goods delivered right to your doorstep.
+        </p>
+        <div class="hero-buttons">
+          <a href="buy.html" class="btn-hero-primary">Browse Products</a>
+          <a href="sell.html" class="btn-hero-secondary">Start Selling</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Local Farmers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10k+</span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Organic</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fresh Farm Produce">
+      </div>
+    </div>
+  </section>
 
-  <!-- Featured Categories -->  
-  <section class="categories">  
-    <h2>🌟 Shop by Category</h2>  
-    <div class="category-grid">  
-      <div class="category-card">  
-        <img src="https://tse1.mm.bing.net/th/id/OIP.BunBa3OuNZSih_gKCizMSAHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vegetables">
-        <h3>Vegetables</h3>  
-      </div>  
-      <div class="category-card">  
-        <img src="https://tse2.mm.bing.net/th/id/OIP.ES3bZ9AYzgPVsbmbvtLmjgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Fruits">  
-        <h3>Fruits</h3>  
-      </div>  
-      <div class="category-card">  
-        <img src="https://www.bing.com/th/id/OIP.lRVTsZ-rkRrvmGGUjU82SgHaFh?w=260&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2" alt="Dairy">  
-        <h3>Dairy</h3>  
-      </div>  
-      <div class="category-card">  
-        <img src="https://tse1.mm.bing.net/th/id/OIP.llTF-y5BU9FhKOj6Voom3QHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Grains">  
-        <h3>Grains</h3>  
-      </div>  
-      <div class="category-card">  
-        <img src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Meat">  
-        <h3>Meat</h3>  
-      </div>  
-    </div>  
-  </section>  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Same-day delivery available for orders placed before 2 PM</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌿</div>
+          <h3>100% Organic</h3>
+          <p>All products are certified organic and pesticide-free</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Best Prices</h3>
+          <p>Direct from farmers means better prices for everyone</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Support Local</h3>
+          <p>Help your community thrive by supporting local agriculture</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Featured Products -->  
-  <section class="featured-products">  
-    <h2>🔥 Best Sellers</h2>  
-    <div class="product-grid">  
-      <div class="product-card">  
-        <img src="https://tse3.mm.bing.net/th/id/OIP.JMRIOYp2jmlICSlEma_3gQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Tomatoes">  
-        <h3>Fresh Tomatoes</h3>  
-        <p>₹50 / kg</p>  
-        <button>Add to Cart</button>  
-      </div>  
-      <div class="product-card">  
-        <img src="https://tse2.mm.bing.net/th/id/OIP.ES3bZ9AYzgPVsbmbvtLmjgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Apples">  
-        <h3>Organic Apples</h3>  
-        <p>₹150 / kg</p>  
-        <button>Add to Cart</button>  
-      </div>  
-      <div class="product-card">  
-        <img src="https://healthimpactnews.com/wp-content/uploads/sites/2/2014/06/Pouring-fresh-raw-milk-in-glass.jpg" alt="Milk">  
-        <h3>Farm Fresh Milk</h3>  
-        <p>₹60 / liter</p>  
-        <button>Add to Cart</button>  
-      </div>  
-      <div class="product-card">  
-        <img src="https://tse4.mm.bing.net/th/id/OIP.NE9ldkHSOtf8C7Vq-FGRPQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Rice">  
-        <h3>Organic Rice</h3>  
-        <p>₹80 / kg</p>  
-        <button>Add to Cart</button>  
-      </div>  
-    </div>  
-  </section>  
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Discover fresh produce across all categories</p>
+      </div>
+      <div class="category-grid">
+        <a href="buy.html?category=vegetables" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Vegetables">
+          </div>
+          <h3>Vegetables</h3>
+          <p>Fresh & Crispy</p>
+        </a>
+        <a href="buy.html?category=fruits" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Fruits">
+          </div>
+          <h3>Fruits</h3>
+          <p>Sweet & Juicy</p>
+        </a>
+        <a href="buy.html?category=dairy" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/248412/pexels-photo-248412.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dairy">
+          </div>
+          <h3>Dairy</h3>
+          <p>Farm Fresh</p>
+        </a>
+        <a href="buy.html?category=grains" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/3928854/pexels-photo-3928854.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Grains">
+          </div>
+          <h3>Grains</h3>
+          <p>Wholesome & Pure</p>
+        </a>
+        <a href="buy.html?category=meat" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Meat">
+          </div>
+          <h3>Meat</h3>
+          <p>Grass-Fed</p>
+        </a>
+        <a href="buy.html?category=eggs" class="category-card">
+          <div class="category-image">
+            <img src="https://images.pexels.com/photos/1556707/pexels-photo-1556707.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Eggs">
+          </div>
+          <h3>Eggs</h3>
+          <p>Free Range</p>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Promo Banner -->  
-  <section class="promo">  
-    <div class="promo-content">  
-      <h2>🎉 Seasonal Sale – Up to 30% Off Fresh Fruits!</h2>  
-      <p>Get healthy & fresh produce delivered straight from farms at amazing prices.</p>  
-      <a href="buy.html" class="btn">Shop the Sale</a>  
-    </div>  
-  </section>  
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">This Week's Best Sellers</h2>
+        <p class="section-subtitle">Most loved by our community</p>
+      </div>
+      <div class="product-grid" id="featuredProducts">
+        <!-- Products will be loaded dynamically -->
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="buy.html" class="btn-primary">View All Products</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->  
-  <footer>  
-    <p>&copy; 2025 Farmers Market Portal. All rights reserved.</p>  
-  </footer>  
-</body>  
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Real reviews from real people</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>"The quality is outstanding! Everything arrives fresh and perfectly packed. I've been ordering weekly for months now."</p>
+          <div class="testimonial-author">
+            <strong>Priya Sharma</strong>
+            <span>Mumbai</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>"Supporting local farmers has never been easier. The platform is user-friendly and delivery is always on time."</p>
+          <div class="testimonial-author">
+            <strong>Rajesh Kumar</strong>
+            <span>Pune</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>"As a farmer, this platform has helped me reach more customers. The commission is fair and payments are prompt."</p>
+          <div class="testimonial-author">
+            <strong>Ganesh Patil</strong>
+            <span>Nashik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Experience Farm-Fresh Goodness?</h2>
+        <p>Join thousands of happy customers who trust us for their daily produce needs</p>
+        <div class="cta-buttons">
+          <a href="buy.html" class="btn-cta-primary">Start Shopping</a>
+          <a href="sell.html" class="btn-cta-secondary">Become a Seller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About FreshMarket</h4>
+          <p>Connecting local farmers with conscious consumers for a sustainable future.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="buy.html">Shop</a></li>
+            <li><a href="sell.html">Sell</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Get weekly deals and fresh updates</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FreshMarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="enhanced-app.js"></script>
+</body>
 </html>
