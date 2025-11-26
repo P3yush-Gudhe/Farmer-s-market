@@ -3,64 +3,554 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buy Products - Farmers Market</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Shopping Cart - Farmers Market</title>
+  <link rel="stylesheet" href="enhanced-style.css">
+  <style>
+    .cart-page {
+      padding: 4rem 0;
+      min-height: 60vh;
+    }
+
+    .cart-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cart-header {
+      margin-bottom: 2rem;
+    }
+
+    .cart-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-content {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+    }
+
+    .cart-items {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item-details h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .item-seller {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .item-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .item-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 0.3rem;
+    }
+
+    .quantity-btn {
+      background: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .quantity-value {
+      min-width: 40px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      transition: var(--transition);
+    }
+
+    .remove-btn:hover {
+      color: #c33f2e;
+    }
+
+    .cart-summary {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .summary-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-dark);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .summary-row.total {
+      border-bottom: none;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .checkout-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--primary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .continue-shopping:hover {
+      color: var(--primary-dark);
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .empty-cart-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .empty-cart h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-gray);
+    }
+
+    .promo-code {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .promo-code input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .apply-promo-btn {
+      width: 100%;
+      background: var(--bg-light);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.7rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .apply-promo-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .cart-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-item {
+        grid-template-columns: 80px 1fr;
+        gap: 1rem;
+      }
+
+      .item-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .cart-summary {
+        position: relative;
+        top: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">🌱 Farmers Market</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="buy.html" class="active">Buy</a></li>
-        <li><a href="sell.html">Sell</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="account.html">Account</a></li>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-icon">🌱</span>
+        <span class="brand-name">FreshMarket</span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="buy.html" class="nav-link">Shop</a></li>
+        <li><a href="sell.html" class="nav-link">Sell</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="cart.html" class="nav-link active cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a></li>
+        <li><a href="account.html" class="btn-primary">Sign In</a></li>
       </ul>
-    </nav>
-  </header>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-<!-- Cart Section -->
-<section id="cart" class="cart-section">
-  <h2>🧺 Your Shopping Cart</h2>
+  <section class="cart-page">
+    <div class="cart-container">
+      <div class="cart-header">
+        <h1>🛒 Shopping Cart</h1>
+        <p id="cartItemCount">0 items in your cart</p>
+      </div>
 
-  <table class="cart-table">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Seller</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Sample Cart Item -->
-      <tr>
-        <td>Fresh Tomatoes</td>
-        <td>GreenFarm</td>
-        <td>$2.50</td>
-        <td><input type="number" value="2" min="1"></td>
-        <td>$5.00</td>
-        <td><button class="btn-remove">Remove</button></td>
-      </tr>
-      <tr>
-        <td>Organic Apples</td>
-        <td>Sunrise Orchards</td>
-        <td>$3.20</td>
-        <td><input type="number" value="1" min="1"></td>
-        <td>$3.20</td>
-        <td><button class="btn-remove">Remove</button></td>
-      </tr>
-    </tbody>
-  </table>
+      <div id="cartContentArea">
+        </div>
+    </div>
+  </section>
 
-  <!-- Checkout -->
-  <div class="checkout-box">
-    <p><strong>Total: $8.20</strong></p>
-    <button class="btn">Proceed to Checkout</button>
-  </div>
-</section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About FreshMarket</h4>
+          <p>Connecting local farmers with conscious consumers for a sustainable future.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="buy.html">Shop</a></li>
+            <li><a href="sell.html">Sell</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>Email: support@freshmarket.com</p>
+          <p>Phone: +91 1234567890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FreshMarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Cart Page Specific JavaScript
+    class CartPage {
+      constructor(app) {
+        this.app = app;
+        if (!this.app) {
+          console.error('FarmersMarketApp is not initialized.');
+          return;
+        }
+        this.init();
+      }
+
+      init() {
+        this.renderCart();
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        // Listen for cart updates
+        window.addEventListener('cartUpdated', () => {
+          this.renderCart();
+        });
+      }
+
+      renderCart() {
+        const contentArea = document.getElementById('cartContentArea');
+        const itemCount = document.getElementById('cartItemCount');
+        
+        if (!this.app || this.app.cart.length === 0) {
+          this.renderEmptyCart(contentArea);
+          if (itemCount) itemCount.textContent = '0 items in your cart';
+          return;
+        }
+
+        if (itemCount) {
+          const count = this.app.getCartItemCount();
+          itemCount.textContent = `${count} ${count === 1 ? 'item' : 'items'} in your cart`;
+        }
+        
+        // Pass the cartPage instance to the window for onclick events
+        window.cartPage = this;
+
+        contentArea.innerHTML = `
+          <div class="cart-content">
+            <div class="cart-items">
+              ${this.app.cart.map(item => this.renderCartItem(item)).join('')}
+            </div>
+            <div class="cart-summary">
+              <h2 class="summary-title">Order Summary</h2>
+              ${this.renderSummary()}
+              <div class="promo-code">
+                <input type="text" placeholder="Enter promo code" id="promoCode">
+                <button class="apply-promo-btn" onclick="cartPage.applyPromo()">Apply Code</button>
+              </div>
+              <button class="checkout-btn" onclick="cartPage.checkout()">
+                Proceed to Checkout
+              </button>
+              <a href="buy.html" class="continue-shopping">← Continue Shopping</a>
+            </div>
+          </div>
+        `;
+      }
+
+      renderCartItem(item) {
+        // CRITICAL FIX: Wrap item.id in quotes for proper string passing in onclick handler
+        const itemId = item.id;
+        return `
+          <div class="cart-item" data-id="${itemId}">
+            <div class="item-image">
+              <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="item-details">
+              <h3>${item.name}</h3>
+              <p class="item-seller">Sold by ${item.seller}</p>
+              <p class="item-price">₹${item.price.toFixed(2)} / ${item.unit || 'kg'}</p>
+            </div>
+            <div class="item-actions">
+              <div class="quantity-control">
+                <button class="quantity-btn" onclick="cartPage.decreaseQuantity('${itemId}')">−</button>
+                <span class="quantity-value">${item.quantity}</span>
+                <button class="quantity-btn" onclick="cartPage.increaseQuantity('${itemId}')">+</button>
+              </div>
+              <button class="remove-btn" onclick="cartPage.removeItem('${itemId}')">
+                🗑️ Remove
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      renderSummary() {
+        const subtotal = this.app.getCartTotal();
+        const shipping = subtotal > 500 ? 0 : 40;
+        const tax = subtotal * 0.05; // 5% tax
+        const total = subtotal + shipping + tax;
+
+        return `
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>₹${subtotal.toFixed(2)}</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>${shipping === 0 ? 'FREE' : '₹' + shipping.toFixed(2)}</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (5%)</span>
+            <span>₹${tax.toFixed(2)}</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>₹${total.toFixed(2)}</span>
+          </div>
+        `;
+      }
+
+      renderEmptyCart(container) {
+        container.innerHTML = `
+          <div class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-gray);">
+              Looks like you haven't added any items yet.
+            </p>
+            <a href="buy.html" class="btn-primary" style="display: inline-block;">
+              Start Shopping
+            </a>
+          </div>
+        `;
+      }
+
+      // Methods accept string IDs now for robustness
+      increaseQuantity(productId) {
+        const item = this.app.cart.find(i => String(i.id) === String(productId));
+        if (item) {
+          this.app.updateQuantity(productId, item.quantity + 1);
+        }
+      }
+
+      decreaseQuantity(productId) {
+        const item = this.app.cart.find(i => String(i.id) === String(productId));
+        if (item && item.quantity > 1) {
+          this.app.updateQuantity(productId, item.quantity - 1);
+        }
+      }
+
+      removeItem(productId) {
+        if (confirm('Remove this item from cart?')) {
+          this.app.removeFromCart(productId);
+        }
+      }
+
+      applyPromo() {
+        const code = document.getElementById('promoCode').value;
+        if (code.toUpperCase() === 'FRESH20') {
+          this.app.showNotification('Promo code applied! 20% off', 'success');
+        } else if (code) {
+          this.app.showNotification('Invalid promo code', 'error');
+        }
+      }
+
+      checkout() {
+        if (!this.app.isLoggedIn()) {
+          this.app.showNotification('Please login to checkout', 'info');
+          setTimeout(() => {
+            window.location.href = 'account.html';
+          }, 1500);
+          return;
+        }
+
+        // In production, create order via API
+        this.app.showNotification('Processing order...', 'success');
+        setTimeout(() => {
+          this.app.clearCart();
+          window.location.href = 'order-success.html';
+        }, 2000);
+      }
+    }
+
+    // Initialize cart page: CRITICAL FIX
+    // Wait for the main app script (enhanced-app.js) to finish and define window.FarmersMarket
+    let cartPage;
+    
+    function initCartPage() {
+        // Ensure FarmersMarket is defined before initializing CartPage
+        if (window.FarmersMarket) {
+            cartPage = new CartPage(window.FarmersMarket);
+            window.cartPage = cartPage; // Expose globally for onclick handlers
+        } else {
+            // Fallback for safety, though DOMContentLoaded in enhanced-app.js should handle it
+            console.error('FarmersMarket app not yet available. Retrying...');
+            setTimeout(initCartPage, 100); 
+        }
+    }
+
+    // Call initCartPage after the DOM is ready (or immediately if it is)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCartPage);
+    } else {
+      initCartPage();
+    }
+  </script>
+  <script src="enhanced-app.js"></script>
+</body>
+</html>
