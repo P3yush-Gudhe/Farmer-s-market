@@ -3,63 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buy Products - Farmers Market</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Sell on FreshMarket</title>
+  <link rel="stylesheet" href="enhanced-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">🌱 Farmers Market</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="buy.html" class="active">Buy</a></li>
-        <li><a href="sell.html">Sell</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="account.html">Account</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <span class="brand-icon">🌱</span>
+      <span>FreshMarket</span>
+    </div>
 
-<!-- Sell Section -->
-<section id="sell" class="sell-section">
-  <h2>🌾 Sell Your Products</h2>
-  <p>List your fresh produce and reach thousands of buyers directly.</p>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="buy.html" class="nav-link">Shop</a></li>
+      <li><a href="sell.html" class="nav-link active">Sell</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="cart.html" class="nav-link cart-link">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-badge">0</span>
+      </a></li>
+    </ul>
 
-  <form class="sell-form">
-    <!-- Product Name -->
-    <label for="product-name">Product Name:</label>
-    <input type="text" id="product-name" name="product-name" placeholder="e.g. Organic Tomatoes" required>
+    <button class="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-    <!-- Category -->
-    <label for="category">Category:</label>
-    <select id="category" name="category" required>
-      <option value="">Select Category</option>
-      <option value="vegetables">Vegetables</option>
-      <option value="fruits">Fruits</option>
-      <option value="dairy">Dairy</option>
-      <option value="grains">Grains</option>
-      <option value="meat">Meat</option>
-    </select>
+<!-- SELL HERO -->
+<section class="hero" style="min-height: 400px;">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-badge">👨‍🌾 Become a Seller</span>
+      <h1 class="hero-title">Sell Your Farm Produce Directly to Buyers</h1>
+      <p class="hero-description">
+        Reach thousands of customers who prefer fresh and organic farm goods.
+      </p>
+      <a href="#sellForm" class="btn-hero-primary">Start Selling</a>
+    </div>
 
-    <!-- Price -->
-    <label for="price">Price (per unit):</label>
-    <input type="number" id="price" name="price" step="0.01" placeholder="e.g. 2.50" required>
+    <div class="hero-image">
+      <img src="https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Farmer Selling">
+    </div>
+  </div>
+</section>
 
-    <!-- Quantity -->
-    <label for="quantity">Available Quantity:</label>
-    <input type="number" id="quantity" name="quantity" placeholder="e.g. 50" required>
+<!-- SELL FORM -->
+<section class="container" style="padding: 4rem 0;" id="sellForm">
+  <div class="section-header">
+    <h2 class="section-title">Add a New Product</h2>
+    <p class="section-subtitle">Fill out the details to list your product</p>
+  </div>
 
-    <!-- Image Upload -->
-    <label for="product-image">Upload Product Image:</label>
-    <input type="file" id="product-image" name="product-image" accept="image/*" required>
+  <form class="product-form" style="
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 700px;
+      margin: auto;
+    ">
+    <div style="margin-bottom: 1.5rem;">
+      <label>Product Name</label>
+      <input type="text" required placeholder="e.g., Organic Tomatoes"
+        style="width:100%; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);">
+    </div>
 
-    <!-- Description -->
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" placeholder="Write a short description about your product..." required></textarea>
+    <div style="margin-bottom: 1.5rem;">
+      <label>Category</label>
+      <select required
+        style="width:100%; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);">
+        <option value="">Choose category</option>
+        <option>Vegetables</option>
+        <option>Fruits</option>
+        <option>Dairy</option>
+        <option>Grains</option>
+        <option>Meat</option>
+        <option>Eggs</option>
+      </select>
+    </div>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn">Add Product</button>
+    <div style="margin-bottom: 1.5rem;">
+      <label>Price (₹)</label>
+      <input type="number" required placeholder="e.g., 120"
+        style="width:100%; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);">
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <label>Upload Image</label>
+      <input type="file" accept="image/*" required
+        style="width:100%; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);">
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <label>Description</label>
+      <textarea rows="5" required placeholder="Product details..."
+        style="width:100%; padding:0.8rem; border-radius:10px; border:1px solid var(--border-color);"></textarea>
+    </div>
+
+    <button class="btn-primary" style="width:100%; font-size:1.1rem;">Submit Product</button>
   </form>
 </section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 FreshMarket. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="enhanced-app.js"></script>
+</body>
+</html>
